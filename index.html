@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+<title>Modal Demo</title>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.body_container {
+    width: 100vw;
+    height: 100vh;
+    background-image: linear-gradient(180deg, rgba(2,0,36,0) 0%, rgba(0,0,0,0.90) 100%), url("./unsplash-picture.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.body_container .top_buttons {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.body_container .top_buttons .account_btn {
+    width: 40px;
+    height: 40px;
+    margin-top: 20px;
+    margin-right: 20px;
+    border: 1px solid rgba(0,0,0,0.90);
+    border-radius: 5px;
+    background: rgba(255,255,255,0.10);
+    padding: 0.25rem;
+}
+
+.account_svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-image: url("./user-solid.svg");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.body_container img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.body_container .image_text {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    color: white;
+    padding: 1rem;
+}
+
+.account_modal {
+    position: absolute;
+    z-index: 10;
+    width: 90vw;
+    margin-left: 5vw;
+    background: rgba(255, 255, 255, 1);
+    padding: 1rem;
+    border-radius: 5px;
+    display: block;
+    opacity: 0;
+    transform: translateY(-100%);
+    transition: transform 1s ease, opacity 1s ease;
+}
+
+.close_modal {
+    position: absolute;
+    right: 0;
+    width: 25px;
+    height: 25px;
+    margin-right: 1rem;
+    border: none;
+    background: none;
+    font-size: 1.5rem;
+}
+</style>
+</head>
+<body>
+    
+    <div class="account_modal">
+        <button class="close_modal">&times;</button>
+        <div class="modal_body">
+            <h1>Account Modal</h1>
+            <p>A modal about someone's account. This section may contain things about signing in or logging in.</p>
+        </div>
+    </div>
+
+    <div class="body_container">
+        <div class="top_buttons">
+            <button class="account_btn">
+                <i class="account_svg"></i>
+            </button>
+        </div>
+        
+        <div class="image_text">
+            <h1>Igor Sporynin</h1>
+            <p>"Orange skies, busy roads. Down by the beach, the ocean peacefully roars."</p>
+        </div>
+    </div>
+
+    <script type="text/javascript" charset="utf-8">
+        const accountModal = document.querySelector(".account_modal")
+        const openModal = document.querySelector(".account_btn")
+        const closeModal = document.querySelector(".close_modal")
+        
+        openModal.addEventListener("click", () => {
+            accountModal.style.transform = "translateY(25vh)"
+            accountModal.style.opacity = "1"
+        })
+        
+        closeModal.addEventListener("click", () => {
+            accountModal.style.transform = "translateY(-100%)"
+            accountModal.style.opacity = "0"
+        })
+    </script>
+</body>
+</html>
